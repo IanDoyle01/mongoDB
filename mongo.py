@@ -17,7 +17,9 @@ conn = mongo_connect(MONGODB_URI)
 
 coll = conn[DBS_NAME][COLLECTION_NAME]
 
-documents = coll.find({'last': 'adams'})
+coll.update_many({'nationality': 'american'}, {'$set': {'hair_colour': 'maroon'}})
+
+documents = coll.find({'nationality': 'american'})
 
 # iterate through the returned mongo object
 for doc in documents:
