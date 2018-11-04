@@ -13,7 +13,7 @@ def mongo_connect(url):
         print("Could not connect to MongoDB: %s") % e
 
 def show_menu():
-    print(" ")
+    print("")
     print("1. Add a record")
     print("2. Find a record by name")
     print("3. Edit a record")
@@ -22,3 +22,26 @@ def show_menu():
     
     option = input("Enter option number:")
     return option
+    
+def main_loop():
+    while True:
+        option = show_menu()
+        if option == "1":
+            print("You have selected option 1")
+        elif option == "2":
+            print("You have selected option 2")
+        elif option == "3":
+            print("You have selected option 3")
+        elif option == "4":
+            print("You have selected option 4")
+        elif option == "5":
+            conn.close()
+            break
+        else:
+            print("Invalid option")
+        print("")
+        
+conn = mongo_connect(MONGODB_URI)
+coll = conn[DBS_NAME][COLLECTION_NAME]
+
+main_loop()
